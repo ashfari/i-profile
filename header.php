@@ -25,11 +25,11 @@ if (session_status() == PHP_SESSION_NONE) {
 		<div class="collapse navbar-collapse" id="navbarTogglerDemo01">
 			<a class="navbar-brand" href="index.php"><img src="images/i-profile_logo.png" alt="i-Pofile" width="50" height="50">i-Profile</a>
 			<ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-				<li class="nav-item active">
-					<a class="nav-link active" href="index.php">Home</a>
+				<li class="nav-item">
+					<a class="nav-link" href="index.php">Home</a>
 				</li>
 				<?php 
-				if (!isset($_SESSION["id_user"])) {
+				if (isset($_SESSION["id_user"])) {
 				 ?>
 				<li class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -63,7 +63,11 @@ if (session_status() == PHP_SESSION_NONE) {
 				</li>
 			</ul>
 			<form class="form-inline my-2 my-lg-0">
-				<a class="nav-link text-light" href="login.php"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+				<?php if (isset($_SESSION['id_user'])): ?>
+					<a class="nav-link text-light" href="#logoutUser" data-toggle="modal"><i class="fa fa-sign-in" aria-hidden="true"></i> Logout</a>
+				<?php else: ?>
+					<a class="nav-link text-light" href="#loginUser" data-toggle="modal"><i class="fa fa-sign-in" aria-hidden="true"></i> Login</a>
+				<?php endif ?>
 				<input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
 				<button class="btn btn-outline-info my-2 my-sm-0" type="submit">Search</button>
 			</form>
