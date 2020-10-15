@@ -36,6 +36,7 @@ if (session_status() == PHP_SESSION_NONE) {
 						Profiles
 					</a>
 					<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+						<a class="dropdown-item" href="account.php">Account</a>
 						<a class="dropdown-item" href="biodata.php">Biodata</a>
 						<a class="dropdown-item" href="#">Educations</a>
 						<a class="dropdown-item" href="#">Skills</a>

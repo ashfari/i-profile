@@ -28,7 +28,7 @@ if (!isset($_SESSION["id_user"])) {
 	</div>
 	<div class="row mt-3">
 		<?php 
-		$result = mysqli_query($mysqli, "SELECT * FROM biodata");
+		$result = mysqli_query($mysqli, "SELECT * FROM biodata ORDER BY updated_at DESC");
 
 		$row = mysqli_num_rows($result);
 		if ($row == 0) {
@@ -253,8 +253,7 @@ if (isset($_POST["create"])) {
 	if (session_status() == PHP_SESSION_NONE) {
 		session_start();
 	}
-	// $id_user = $_SESSION["id_user"];
-	$id_user = 1;
+	$id_user = $_SESSION["id_user"];
 
 	// Insert record
 	$query = mysqli_query($mysqli, "INSERT INTO biodata VALUES(null,'$id_user','$label','$place_of_birth','$date_of_birth','$gender','$religion','$country','$marital_status','$address','$phone','$languages',null,null)") or die ("Query fault : ".mysqli_error($mysqli));
@@ -287,8 +286,7 @@ if (isset($_POST["update"])) {
 	if (session_status() == PHP_SESSION_NONE) {
 		session_start();
 	}
-	// $id_user = $_SESSION["id_user"];
-	$id_user = 1;
+	$id_user = $_SESSION["id_user"];
 
 	// Update record
 	$query = mysqli_query($mysqli, "UPDATE biodata SET id_user='$id_user',label='$label',place_of_birth='$place_of_birth',date_of_birth='$date_of_birth',gender='$gender',religion='$religion',country='$country',marital_status='$marital_status',address='$address',phone='$phone',languages='$languages',updated_at=null WHERE id='$id'") or die ("Query fault : ".mysqli_error($mysqli));
